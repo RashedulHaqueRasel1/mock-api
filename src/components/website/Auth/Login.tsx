@@ -16,12 +16,13 @@ export default function Login() {
 
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email");
+    const name = formData.get("name");
 
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, name }),
       });
 
       const data = await response.json();
@@ -45,10 +46,18 @@ export default function Login() {
           Check your inbox
         </h1>
         <p className="mt-6 text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-          We've sent a verification link to your email.
-          Please <strong>check your inbox</strong> and click the link to secure your session.
-          If you don't see it, check your spam folder.
+          We've sent a verification link to your email. Please{' '}
+          <a
+            href="https://mail.google.com/mail/u/0/#inbox"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-indigo-600  hover:underline"
+          >
+            check your inbox
+          </a>{' '}
+          and click the link to secure your session. If you don't see it, check your spam folder.
         </p>
+
         <button
           onClick={() => setIsSent(false)}
           className="mt-10 text-sm font-bold text-indigo-600 hover:text-indigo-500 transition-colors"
@@ -81,6 +90,25 @@ export default function Login() {
       </div>
 
       <form className="mt-10 space-y-6" onSubmit={handleSubmit}>
+        <div className="space-y-1">
+          <label
+            htmlFor="name"
+            className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400"
+          >
+            Full Name
+          </label>
+          <div className="mt-1">
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              className="block w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-3.5 px-4 text-slate-900 dark:text-white shadow-sm ring-inset ring-indigo-500 placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6 transition-all outline-none"
+              placeholder="John Doe"
+            />
+          </div>
+        </div>
+
         <div className="space-y-1">
           <label
             htmlFor="email"

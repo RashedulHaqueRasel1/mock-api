@@ -7,7 +7,7 @@ import { sendVerificationEmail } from "@/lib/mail";
 
 export async function POST(req: Request) {
   try {
-    const { email } = await req.json();
+    const { email, name } = await req.json();
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
@@ -15,27 +15,38 @@ export async function POST(req: Request) {
 
     await connectDB();
 
+    console.log("=> LOGIN ATTEMPT:", { email, name });
+
     // 1. Generate verification token
     const token = crypto.randomBytes(32).toString("hex");
     const expires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
 
-    // 2. Create or update user
-    let user = await User.findOne({ email });
+    // 2. ATOMIC UPSERT: Create or update user and set name definitively
+    const user = await User.findOneAndUpdate(
+      { email },
+      { 
+        $set: { 
+          name: name,
+          verificationToken: token,
+          verificationTokenExpires: expires 
+        } 
+      },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
 
-    if (!user) {
-      user = new User({ email });
-    }
-
-    user.verificationToken = token;
-    user.verificationTokenExpires = expires;
-    await user.save();
+    console.log("=> PERSISTENCE SUCCESSFUL:", {
+      id: user._id,
+      email: user.email,
+      savedName: user.name,
+      isNew: !user.isVerified
+    });
 
     // 3. Construct verification link (Points to client-side page)
     const host = process.env.NEXTAUTH_URL || "http://localhost:3000";
     const verificationLink = `${host}/verify?token=${token}&email=${encodeURIComponent(email)}`;
 
-    // 4. Send real email using Nodemailer
-    await sendVerificationEmail(email, verificationLink);
+    // 4. Send real email using Nodemailer (Personalized)
+    await sendVerificationEmail(email, verificationLink, user.name || name || "User");
 
     return NextResponse.json({
       status: "success",
