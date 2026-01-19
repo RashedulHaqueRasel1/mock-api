@@ -1,84 +1,95 @@
-## 🚀 Template Overview Website
+# 🚀 MockAPI
 
-A modern, scalable website built using **Next.js 14**, **TypeScript**, **Tailwind CSS**, **Shadcn UI**, **Lucide Icons**, **Zod**, **Axios**, **TanStack Query**, and **Sonner Toast** — with a clean architecture and modular folder structure.
+A premium, professional environment for frontend developers to create, manage, and test APIs instantly. No backend required—just pure JSON agility. Built with a modern, scalable architecture using **Next.js 15**, **TypeScript**, and **MongoDB**.
+
+---
+
+## ✨ Key Features
+
+### 🔐 Multi-Layer Authentication
+
+- **Secure Email Verification**: Personalized "Hello [Name]" greetings powered by Nodemailer and Gmail SMTP.
+- **72-Hour Sessions**: Robust session management with persistent Access, Refresh, and Secure tokens.
+- **Atomic Identity Persistence**: User data and tokens are linked and saved permanently in MongoDB via atomic upserts.
+
+### 🎨 Premium UI/UX
+
+- **Interactive Demo Gallery**: Explore industry-standard JSON mocks (E-commerce, Social, Analytics) with custom syntax highlighting.
+- **Glassmorphism Design**: High-end aesthetic with mesh gradients, backdrop blurs, and responsive dark mode.
+- **Micro-Animations**: Smooth transitions and hover states for a professional feel.
+
+### 🧠 Advanced Backend Logic
+
+- **Mongoose Integration**: Flexible schema modeling with singleton connection management.
+- **Token Authorization**: Secure JWT-based access with intelligent token reuse logic.
+- **Diagnostic Logging**: Explicit server-side logs for database sync and persistence handshakes.
 
 ---
 
 ## 🚀 Tech Stack
 
-- **Framework:** [Next.js 16.0.7](https://nextjs.org/)
+- **Framework:** [Next.js 15+](https://nextjs.org/)
+- **Database:** [MongoDB](https://www.mongodb.com/) (via Mongoose)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS + Shadcn/UI
+- **Mailing:** Nodemailer (Gmail SMTP)
+- **Auth:** Custom JWT + NextAuth (Middleware ready)
 - **Icons:** Lucide Icons
-- **Form Validation:** Zod
-- **Data Fetching:** Axios + TanStack Query
-- **Notifications:** Sonner Toast
-- **Linting & Commit Hooks:** ESLint, Husky, Commitlint, Lint-staged
-
----
+- **Validation:** Zod
+- **Fetching:** Axios + TanStack Query
 
 ---
 
 ## ⚙️ Setup & Installation
 
-# 1️⃣ Clone the repository
+### 1️⃣ Clone & Install
 
-git clone https://github.com/RashedulHaqueRasel1/Template-Overview-Website.git
-
-# 2️⃣ Navigate to the project
-
-cd Template-Overview-Website
-
-# 3️⃣ Install dependencies
-
+```bash
+git clone https://github.com/RashedulHaqueRasel1/mock-api.git
+cd mock-api
 npm install
+```
 
-# 4️⃣ Run development server
+### 2️⃣ Environment Variables
 
+Create a `.env.local` file in the root directory:
+
+```env
+# MongoDB
+MONGODB_URI=your_mongodb_connection_string
+
+# Authentication
+NEXTAUTH_SECRET=your_jwt_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# Nodemailer (Gmail)
+EMAIL_USER=your_gmail_address
+EMAIL_PASS=your_gmail_app_password
+```
+
+### 3️⃣ Run Development Server
+
+```bash
 npm run dev
+```
 
-Then open http://localhost:3000 in your browser.
+Open [http://localhost:3000](http://localhost:3000) to start prototyping.
 
-🧩 Features
-✨ Modern UI built with Tailwind + Shadcn
+---
 
-🔐 Authentication with NextAuth.js
+## ⚡ Scripts
 
-⚡ API integration with Axios
+- `npm run dev`: Start development server
+- `npm run build`: Create production build
+- `npm run start`: Run production build
+- `npm run lint`: Run ESLint checks
 
-🔍 Data fetching & caching using TanStack Query
+---
 
-🧠 Strong validation using Zod
+## 🧑‍💻 Author
 
-💬 Beautiful toasts with Sonner
+**Rashedul Haque Rasel**
+Built with ❤️ using Next.js, TypeScript, and MongoDB.
 
-🧰 Modular, scalable folder structure
-
-🔒 Husky pre-commit hook + Commitlint setup
-
-📦 Scripts
-Command Description
-npm run dev Start development server
-npm run build Create production build
-npm run start Run production build
-npm run lint Run ESLint
-npm run format Prettify code (if configured)
-
-🧪 Husky Setup (Pre-commit)
-This project uses Husky and Lint-staged to enforce clean commits.
-
-# Add a new hook
-
-npx husky add .husky/pre-commit "npm run lint"
-git add .husky/pre-commit
-
---
-
-🧑‍💻 Author
-
-Rashedul Haque Rasel
-
-Built with ❤️ using Next.js, TypeScript, and Tailwind CSS.
-
-📧 [rashedulhaquerasel1@gmail.com](rashedulhaquerasel1@gmail.com) 
-🌐 [Protfolio](https://rashedul-haque-rasel.vercel.app)
+📧 [rashedulhaquerasel1@gmail.com](mailto:rashedulhaquerasel1@gmail.com)
+🌐 [Portfolio](https://rashedul-haque-rasel.vercel.app)
