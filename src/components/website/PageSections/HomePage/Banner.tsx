@@ -55,9 +55,12 @@ export default function Banner() {
                 Start Creating Free
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
-              <a href="#demo" className="inline-flex items-center justify-center rounded-2xl px-10 py-4.5 text-base font-bold text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all">
+              <Link
+                href="/demo"
+                className="inline-flex items-center justify-center rounded-2xl px-10 py-4.5 text-base font-bold text-slate-700 dark:text-slate-300 ring-1 ring-slate-200 dark:ring-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all"
+              >
                 Watch Demo
-              </a>
+              </Link>
             </div>
           </div>
         </div>

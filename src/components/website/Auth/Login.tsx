@@ -132,7 +132,7 @@ export default function Login() {
         <div>
           <button
             type="submit"
-            className="group relative flex w-full justify-center rounded-xl bg-indigo-600 px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-indigo-600/20 hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all active:scale-[0.98]"
+            className="group relative flex w-full justify-center rounded-xl cursor-pointer bg-indigo-600 px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-indigo-600/20 hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all active:scale-[0.98]"
           >
             Continue to Workspace
             <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
@@ -140,14 +140,6 @@ export default function Login() {
         </div>
       </form>
 
-      <div className="mt-10 pt-10 border-t border-slate-100 dark:border-slate-800">
-        <p className="text-center sm:text-left text-sm text-slate-500">
-          New here?{" "}
-          <Link href="#" className="font-bold text-indigo-600 hover:text-indigo-500 transition-colors">
-            Create a free account
-          </Link>
-        </p>
-      </div>
 
       <p className="mt-20 text-center sm:text-left text-xs text-slate-400 px-0">
         By continuing, you agree to our Terms of Service and Privacy Policy.
